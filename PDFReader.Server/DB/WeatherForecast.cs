@@ -1,7 +1,11 @@
-namespace PDFReader.Server
+using Microsoft.EntityFrameworkCore;
+
+namespace PDFReader.Server.DB
 {
+    [PrimaryKey("Date")]
     public class WeatherForecast
     {
+        
         public DateOnly Date { get; set; }
 
         public int TemperatureC { get; set; }
