@@ -23,7 +23,11 @@ namespace PDFReader.Server.Controllers
             _weatherDB = weatherDB;
             _weatherDB.Database.EnsureCreated();
 
-            _weatherDB.Database.ExecuteSqlRaw("delete from WeatherForecasts");
+            //_weatherDB.Database.ExecuteSqlRaw("delete from WeatherForecasts");
+            if (_weatherDB.WeatherForecasts.Any())
+            {
+                return; 
+            }
             
             for (int i = 1; i < 6; ++i)
             {
