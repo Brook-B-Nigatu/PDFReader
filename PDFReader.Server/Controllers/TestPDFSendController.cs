@@ -4,13 +4,16 @@ namespace PDFReader.Server.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class TestPDFSendController : ControllerBase
+    public class TestPDFController : ControllerBase
     {
         [HttpGet("")]
         public ActionResult GetPDF()
         {
 
-            return PhysicalFile(Path.GetFullPath("blank.pdf"), "application/pdf", "blank");
+            return PhysicalFile(Path.GetFullPath("blank.pdf"), "application/pdf", "blank1");
         }
+
     }
+
+
 }
