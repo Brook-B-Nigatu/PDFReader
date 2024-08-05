@@ -1,12 +1,14 @@
 import { useState } from 'react';
 
 export default function FileUploadForm() {
-    const [file, setFile] = useState();
+    const [file1, setFile] = useState();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData();
-        formData.append('file', file);
+        
+        formData.append('file', file1);
+
         event.target.reset();
 
         try {
@@ -27,7 +29,7 @@ export default function FileUploadForm() {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input type='file' onChange={handleFile} />
+            <input type='file' onChange={handleFile} required/>
             <button type='submit'>Upload</button>
         </form>
     )
