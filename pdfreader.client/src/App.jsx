@@ -1,10 +1,11 @@
 
 import './App.css';
-import FileUploadForm from './FileUploadForm.jsx';
+import Home from './Home.jsx';
 
 
 function App() {
-    return <FileUploadForm/>
+
+    return <Home/>
 }
 
 export default App;

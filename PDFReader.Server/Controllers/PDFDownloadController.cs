@@ -2,7 +2,7 @@
 
 namespace PDFReader.Server.Controllers
 {
-    [Route("download")]
+    [Route("api/download")]
     [ApiController]
     public class PDFDownloadController : ControllerBase
     {

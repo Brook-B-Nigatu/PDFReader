@@ -3,7 +3,7 @@
 namespace PDFReader.Server.Controllers
 {
     [ApiController]
-    [Route("upload")]
+    [Route("api/upload")]
     public class PDFUploadController : ControllerBase
     {
         [HttpPost("")]

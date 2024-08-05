@@ -12,7 +12,7 @@ export default function FileUploadForm() {
         event.target.reset();
 
         try {
-            await fetch("upload", {
+            await fetch("api/upload", {
                 method: "Post",
                 body: formData
             });
