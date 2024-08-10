@@ -1,11 +1,14 @@
 import FileUploadForm from "./FileUploadForm";
 import FileList from "./FileList";
+import DisplayPdf from "./DisplayPdf";
 import { useState, useEffect } from 'react';
+
 
 
 export default function Home() {
 
     const [fileNames, setFileNames] = useState([]);
+    const [activeFileUrl, setActiveFileUrl] = useState("");
 
     useEffect(
         () => { getFileNames() },
@@ -22,7 +25,8 @@ export default function Home() {
     return (
         <div>
             <FileUploadForm />
-            <FileList fileNames={fileNames} />
+            <FileList fileNames={fileNames} setUrl={setActiveFileUrl} />
+            <DisplayPdf url={activeFileUrl} />
         </div>
      )
 }
