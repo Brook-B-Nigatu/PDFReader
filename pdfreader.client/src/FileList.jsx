@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'; 
-
+import { useState } from 'react';
 
 export default function FileList({ fileNames, setUrl }) {
 
@@ -10,15 +10,26 @@ export default function FileList({ fileNames, setUrl }) {
 }
 
 function FileListItem({ fileName, setUrl }) {
+    const [fileUrl, setFileUrl] = useState("");
     const fetchFile = async () => {
         const response = await fetch(`api/download/${fileName}`);
         const blb = await response.blob();
         const url = URL.createObjectURL(blb);
-        await setUrl(url);
+        setFileUrl(url);
+        setUrl(url);
+    }
+    const handleClick = () => {
+        if (fileUrl == "") {
+            fetchFile();
+        }
+        else {
+            setUrl(fileUrl);
+        }
+        
     }
 
     return (
-        <button onClick={fetchFile}>{fileName}</button>
+        <button onClick={handleClick}>{fileName}</button>
     );
 }
 

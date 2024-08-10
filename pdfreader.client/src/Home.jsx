@@ -15,6 +15,11 @@ export default function Home() {
         []
     );
 
+    useEffect(
+        () => { console.log(activeFileUrl); },
+        [activeFileUrl]
+    );
+
 
     async function getFileNames() {
         const response = await fetch("api/download");
