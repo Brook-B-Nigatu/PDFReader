@@ -1,6 +1,0 @@
-@PDFReader.Server_HostAddress = http://localhost:5023
-
-GET {{PDFReader.Server_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

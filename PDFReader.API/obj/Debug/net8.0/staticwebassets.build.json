@@ -1,0 +1,23 @@
+{
+  "Version": 1,
+  "Hash": "k/mizqjDH75yzQADn7cUhnCQLgVXvTd2hL7xi68W/zE=",
+  "Source": "PDFReader.API",
+  "BasePath": "_content/PDFReader.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\hp\\Desktop\\PDFReader\\PDFReader.Web\\PDFReader.Web.esproj",
+      "Version": 2,
+      "Source": "PDFReader.Web",
+      "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
