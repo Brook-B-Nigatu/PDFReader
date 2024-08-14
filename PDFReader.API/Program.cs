@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using PDFReader.API.DBModels;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +10,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// TODO handle possible exception from null or invalid conn string.
+string? connectionString = Environment.GetEnvironmentVariable("PDFReaderConnectionString");
+builder.Services.AddDbContext<PDFReaderDB>(options => options.UseSqlServer(connectionString));
 
 var app = builder.Build();
 
