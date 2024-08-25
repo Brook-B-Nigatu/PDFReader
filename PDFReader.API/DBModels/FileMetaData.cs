@@ -2,7 +2,7 @@
 
 namespace PDFReader.API.DBModels
 {
-    public class FileMetaData 
+    public class FileMetadata 
     {
         public int ID { get; set; }
         [Required]
