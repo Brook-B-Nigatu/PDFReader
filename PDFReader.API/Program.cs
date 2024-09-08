@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using PDFReader.API.DBModels;
+using PDFReader.API.Repositories.Interfaces;
+using PDFReader.API.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +14,10 @@ builder.Services.AddSwaggerGen();
 
 // TODO handle possible exception from null or invalid conn string.
 string? connectionString = Environment.GetEnvironmentVariable("PDFReaderConnectionString");
-builder.Services.AddDbContext<PDFReaderDB>(options => options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<PDFReaderDBContext>(options => options.UseSqlServer(connectionString));
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IFileMetadataRepository, FileMetadataRepository>();
 
 var app = builder.Build();
 

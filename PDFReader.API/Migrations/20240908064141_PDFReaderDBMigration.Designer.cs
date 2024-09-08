@@ -11,8 +11,8 @@ using PDFReader.API.DBModels;
 
 namespace PDFReader.API.Migrations
 {
-    [DbContext(typeof(PDFReaderDB))]
-    [Migration("20240814092316_PDFReaderDBMigration")]
+    [DbContext(typeof(PDFReaderDBContext))]
+    [Migration("20240908064141_PDFReaderDBMigration")]
     partial class PDFReaderDBMigration
     {
         /// <inheritdoc />
@@ -20,12 +20,12 @@ namespace PDFReader.API.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.0")
+                .HasAnnotation("ProductVersion", "8.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("PDFReader.API.DBModels.FileMetaData", b =>
+            modelBuilder.Entity("PDFReader.API.DBModels.FileMetadata", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -83,7 +83,7 @@ namespace PDFReader.API.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("PDFReader.API.DBModels.FileMetaData", b =>
+            modelBuilder.Entity("PDFReader.API.DBModels.FileMetadata", b =>
                 {
                     b.HasOne("PDFReader.API.DBModels.User", "Owner")
                         .WithMany()

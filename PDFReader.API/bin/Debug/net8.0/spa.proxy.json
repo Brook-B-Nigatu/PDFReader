@@ -3,7 +3,7 @@
 "ServerUrl": "https://localhost:5173",
 "RedirectUrl": "",
 "LaunchCommand": "npm run dev",
-"WorkingDirectory": "C:\\Users\\hp\\Desktop\\PDFReader\\PDFReader.API\\..\\PDFReader.Web",
+"WorkingDirectory": "C:\\Users\\brook\\Desktop\\Projects\\PDFReader\\PDFReader.API\\..\\PDFReader.Web",
 "MaxTimeoutInSeconds": "120",
 "KeepRunning": "false"
 }

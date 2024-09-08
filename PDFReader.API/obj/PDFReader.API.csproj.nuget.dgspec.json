@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hp\\Desktop\\PDFReader\\PDFReader.API\\PDFReader.API.csproj": {}
+    "C:\\Users\\brook\\Desktop\\Projects\\PDFReader\\PDFReader.API\\PDFReader.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hp\\Desktop\\PDFReader\\PDFReader.API\\PDFReader.API.csproj": {
+    "C:\\Users\\brook\\Desktop\\Projects\\PDFReader\\PDFReader.API\\PDFReader.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hp\\Desktop\\PDFReader\\PDFReader.API\\PDFReader.API.csproj",
+        "projectUniqueName": "C:\\Users\\brook\\Desktop\\Projects\\PDFReader\\PDFReader.API\\PDFReader.API.csproj",
         "projectName": "PDFReader.API",
-        "projectPath": "C:\\Users\\hp\\Desktop\\PDFReader\\PDFReader.API\\PDFReader.API.csproj",
-        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hp\\Desktop\\PDFReader\\PDFReader.API\\obj\\",
+        "projectPath": "C:\\Users\\brook\\Desktop\\Projects\\PDFReader\\PDFReader.API\\PDFReader.API.csproj",
+        "packagesPath": "C:\\Users\\brook\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\brook\\Desktop\\Projects\\PDFReader\\PDFReader.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\brook\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -52,25 +52,25 @@
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[8.0.8, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[8.0.8, )"
             },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[8.0.8, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[8.0.8, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.4.0, )"
+              "version": "[6.7.3, )"
             }
           },
           "imports": [
@@ -92,7 +92,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
