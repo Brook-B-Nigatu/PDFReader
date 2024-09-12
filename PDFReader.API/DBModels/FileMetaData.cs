@@ -11,13 +11,13 @@ namespace PDFReader.API.DBModels
         public string Path { get; set; }
         [Required]
         public User Owner { get; set; }     // Navigation property to Users table 
-        [Required]
+        
         public int ReadCount {  get; set; }
-        [Required]
+        
         public int DownloadCount { get; set; }
-        [Required]
+        
         public DateTime UploadDate { get; set; }
-        [Required]
+        
         public DateTime LastDownloadDate { get; set; }
 
     }

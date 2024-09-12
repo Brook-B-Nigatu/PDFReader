@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PDFReader.API.FileManagement.Interface;
+using PDFReader.API.Repositories.Interfaces;
+using PDFReader.API.DBModels;
 
 namespace PDFReader.API.Controllers
 {
@@ -6,26 +9,35 @@ namespace PDFReader.API.Controllers
     [Route("api/upload")]
     public class PDFUploadController : ControllerBase
     {
+        private readonly IFileMetadataRepository _fileMetadataRepository;
+        private readonly IUserRepository _userRepository;
+        private readonly IFileManager _FileManager;
+
+        public PDFUploadController(IUserRepository userRepository, 
+                                   IFileMetadataRepository fileMetadataRepository,
+                                   IFileManager fileManager)
+        {
+            // inject services
+            _userRepository = userRepository;
+            _fileMetadataRepository = fileMetadataRepository;
+            _FileManager = fileManager;
+        }
+
         [HttpPost("")]
         public IActionResult Upload(IFormFile file)
         {
-            // Handles files submitted via the upload form. Saves file to Files/ or does nothing
-            // if it already exists. 
+            string userName = "default";    // temporary until proper user-based system is implemented
+            string path = _FileManager.StoreFile(file);
 
-
-            string path = Path.Combine(Directory.GetCurrentDirectory(), "Files", file.FileName);
-
-            if (System.IO.File.Exists(path))
             {
-                return Ok();
+                if (!_userRepository.Exists(userName))
+                {
+                    _userRepository.AddUser(new User { UserName = userName });
+                }
             }
 
-            Directory.CreateDirectory(Path.GetDirectoryName(path));
-
-            using (var stream = new FileStream(path, FileMode.Create))
-            {
-                file.CopyTo(stream);
-            }
+            User owner = _userRepository.GetUserByName(userName);
+            _fileMetadataRepository.AddFileMetadata(new FileMetadata { Name =file.Name, Path = path, Owner = owner });
 
             return Ok();
         }

@@ -14,9 +14,11 @@ namespace PDFReader.API.Repositories.Interfaces
         // Task DeleteFileMetadataAsync(int ID);
         FileMetadata? GetFileMetadataByID(int id);
 
-        FileMetadata? GetFileMetadataByName(string name);
+        FileMetadata? GetFileMetadataByName(string name, string username);
 
-        string? GetPath(string filename);
+        string? GetPath(string filename, string username);
+
+        bool Exists(string filename, string username);
 
     }
 }

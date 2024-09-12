@@ -22,14 +22,19 @@ namespace PDFReader.API.Repositories
             return _context.FileMetadata.Find(id);
         }
 
-        public FileMetadata? GetFileMetadataByName(string name)
+        public FileMetadata? GetFileMetadataByName(string name, string username)
         {
-            return _context.FileMetadata.FirstOrDefault(data => data.Name == name);
+            return _context.FileMetadata.FirstOrDefault(data => (data.Name == name && data.Owner.UserName == username));
         }
 
-        public string? GetPath(string name)
+        public string? GetPath(string name, string username)
         {
-            return GetFileMetadataByName(name)?.Path;
+            return GetFileMetadataByName(name, username)?.Path;
+        }
+
+        public bool Exists(string filename, string username)
+        {
+            return _context.FileMetadata.Any(data => (data.Name == filename && data.Owner.UserName == username));
         }
     }
 }

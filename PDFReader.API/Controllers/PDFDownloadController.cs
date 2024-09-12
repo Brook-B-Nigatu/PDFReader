@@ -1,4 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PDFReader.API.DBModels;
+using PDFReader.API.FileManagement.Interface;
+using PDFReader.API.Repositories.Interfaces;
+using System.Runtime.CompilerServices;
 
 namespace PDFReader.API.Controllers
 {
@@ -6,19 +10,28 @@ namespace PDFReader.API.Controllers
     [ApiController]
     public class PDFDownloadController : ControllerBase
     {
+        private readonly IFileMetadataRepository _fileMetadataRepository;
+        private readonly IFileManager _fileManager;
+        public PDFDownloadController(IFileMetadataRepository fileMetadataRepository, IFileManager fileManager)
+        {
+            _fileMetadataRepository = fileMetadataRepository;
+            _fileManager = fileManager;
+        }
+
         [HttpGet("")]
         public string[] GetList()
         {
             // Return an array of the available files
-            string[] fileNames = Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory(), "Files"));
-
-            return fileNames.Select(s => Path.GetFileName(s)).ToArray();
+            return _fileManager.GetFileNames();
         }
 
         [HttpGet("{fileName}")]
-        public IActionResult GetPDF(string fileName)
+        public IActionResult GetPDF(string filename)
         {
-            return PhysicalFile(Path.Combine(Directory.GetCurrentDirectory(), "Files", fileName), "application/pdf", fileName);
+            string username = "default";
+            string path = _fileManager.DeterminePath(filename, username);
+            
+            return PhysicalFile(path, "application/pdf", filename);
         }
 
     }

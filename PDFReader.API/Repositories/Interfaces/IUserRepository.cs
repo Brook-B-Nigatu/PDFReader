@@ -14,5 +14,7 @@ namespace PDFReader.API.Repositories.Interfaces
         User? GetUserByID(int ID);
 
         User? GetUserByName(string name);
+
+        bool Exists(string name); 
     }
 }

@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using PDFReader.API.DBModels;
 using PDFReader.API.Repositories.Interfaces;
 using PDFReader.API.Repositories;
+using PDFReader.API.FileManagement.Interface;
+using PDFReader.API.FileManagement;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +20,7 @@ builder.Services.AddDbContext<PDFReaderDBContext>(options => options.UseSqlServe
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IFileMetadataRepository, FileMetadataRepository>();
+builder.Services.AddScoped<IFileManager, FileManagerLocal>();
 
 var app = builder.Build();
 

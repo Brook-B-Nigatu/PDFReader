@@ -26,5 +26,10 @@ namespace PDFReader.API.Repositories
         {
             return _context.Users.FirstOrDefault(user => user.UserName == name);
         }
+
+        public bool Exists(string username)
+        { 
+            return _context.Users.Any(user => user.UserName == username);
+        }
     }
 }
