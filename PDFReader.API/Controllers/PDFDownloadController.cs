@@ -21,8 +21,11 @@ namespace PDFReader.API.Controllers
         [HttpGet("")]
         public string[] GetList()
         {
+            string username = "default";
             // Return an array of the available files
-            return _fileManager.GetFileNames();
+            
+            //throw new Exception("Test Exception");
+            return _fileManager.GetFileNames(username);
         }
 
         [HttpGet("{fileName}")]

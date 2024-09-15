@@ -4,6 +4,7 @@ using PDFReader.API.Repositories.Interfaces;
 using PDFReader.API.Repositories;
 using PDFReader.API.FileManagement.Interface;
 using PDFReader.API.FileManagement;
+using PDFReader.API.ExceptionHandling;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,8 +23,12 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IFileMetadataRepository, FileMetadataRepository>();
 builder.Services.AddScoped<IFileManager, FileManagerLocal>();
 
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
+
 var app = builder.Build();
 
+app.UseExceptionHandler();
 app.UseDefaultFiles();
 app.UseStaticFiles();
 
