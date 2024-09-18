@@ -21,18 +21,17 @@ namespace PDFReader.API.Controllers
         [HttpGet("")]
         public string[] GetList()
         {
+            // Return an array of the available files for the requesting user
             string username = "default";
-            // Return an array of the available files
-            
-            //throw new Exception("Test Exception");
-            return _fileManager.GetFileNames(username);
+            string[] res = _fileMetadataRepository.GetFilesOfUser(username).Select(data => data.Name).ToArray();
+            return res;
         }
 
         [HttpGet("{fileName}")]
         public IActionResult GetPDF(string filename)
         {
             string username = "default";
-            string path = _fileManager.DeterminePath(filename, username);
+            string path = _fileMetadataRepository.GetPath(filename, username);
             
             return PhysicalFile(path, "application/pdf", filename);
         }

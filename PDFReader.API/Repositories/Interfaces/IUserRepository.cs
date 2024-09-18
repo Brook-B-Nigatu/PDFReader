@@ -11,9 +11,9 @@ namespace PDFReader.API.Repositories.Interfaces
         // Task<IEnumerable<User>> GetAllUsersAsync();
         void AddUser(User user);
         // Task DeleteUserAsync(int ID);
-        User? GetUserByID(int ID);
+        User GetUserByID(int ID);
 
-        User? GetUserByName(string name);
+        User GetUserByName(string name);
 
         bool Exists(string name); 
     }

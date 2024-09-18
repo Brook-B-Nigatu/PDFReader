@@ -26,6 +26,7 @@ namespace PDFReader.API.Controllers
         [HttpPost("")]
         public IActionResult Upload(IFormFile file)
         {
+
             string userName = "default";    // temporary until proper user-based system is implemented
             string path = _FileManager.StoreFile(file);
 
@@ -37,7 +38,7 @@ namespace PDFReader.API.Controllers
             }
 
             User owner = _userRepository.GetUserByName(userName);
-            _fileMetadataRepository.AddFileMetadata(new FileMetadata { Name =file.Name, Path = path, Owner = owner });
+            _fileMetadataRepository.AddFileMetadata(new FileMetadata { Name =file.FileName, Path = path, Owner = owner });
 
             return Ok();
         }

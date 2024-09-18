@@ -12,11 +12,13 @@ namespace PDFReader.API.Repositories.Interfaces
         void AddFileMetadata(FileMetadata data);
 
         // Task DeleteFileMetadataAsync(int ID);
-        FileMetadata? GetFileMetadataByID(int id);
+        FileMetadata GetFileMetadataByID(int id);
 
-        FileMetadata? GetFileMetadataByName(string name, string username);
+        FileMetadata GetFileMetadataByName(string name, string username);
 
-        string? GetPath(string filename, string username);
+        IEnumerable<FileMetadata> GetFilesOfUser(string username);
+
+        string GetPath(string filename, string username);
 
         bool Exists(string filename, string username);
 

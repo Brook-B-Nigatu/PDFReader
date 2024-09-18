@@ -30,12 +30,5 @@ namespace PDFReader.API.FileManagement
 
             return path;
         }
-
-        public string[] GetFileNames(string userName = "default")
-        {
-            string[] paths = Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory(), "Files", "default"));
-            
-            return paths.Select(path => Path.GetFileName(path)).ToArray();
-        }
     }
 }

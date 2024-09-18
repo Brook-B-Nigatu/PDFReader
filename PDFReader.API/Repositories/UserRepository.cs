@@ -17,14 +17,16 @@ namespace PDFReader.API.Repositories
             _context.SaveChanges();
         }
 
-        public User? GetUserByID(int id)
+        public User GetUserByID(int id)
         {
-            return _context.Users.Find(id);
+            
+            return _context.Users.Find(id) ?? throw new Exception($"No user with id {id}");
         }
 
-        public User? GetUserByName(string name)
+        public User GetUserByName(string name)
         {
-            return _context.Users.FirstOrDefault(user => user.UserName == name);
+            return _context.Users.FirstOrDefault(user => user.UserName == name)
+                ?? throw new Exception($"No user with username {name}");
         }
 
         public bool Exists(string username)

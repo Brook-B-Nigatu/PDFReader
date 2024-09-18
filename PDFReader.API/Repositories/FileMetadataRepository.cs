@@ -17,19 +17,25 @@ namespace PDFReader.API.Repositories
             _context.SaveChanges();
         }
 
-        public FileMetadata? GetFileMetadataByID(int id)
+        public FileMetadata GetFileMetadataByID(int id)
         {
-            return _context.FileMetadata.Find(id);
+            return _context.FileMetadata.Find(id)?? throw new Exception($"No file metadata with id {id}");
         }
 
-        public FileMetadata? GetFileMetadataByName(string name, string username)
+        public FileMetadata GetFileMetadataByName(string name, string username)
         {
-            return _context.FileMetadata.FirstOrDefault(data => (data.Name == name && data.Owner.UserName == username));
+            return _context.FileMetadata.FirstOrDefault(data => (data.Name == name && data.Owner.UserName == username))
+                ?? throw new Exception($"User {username} owns no file with name {name}");
         }
 
-        public string? GetPath(string name, string username)
+        public IEnumerable<FileMetadata> GetFilesOfUser(string username)
         {
-            return GetFileMetadataByName(name, username)?.Path;
+            return _context.FileMetadata.Where(data => data.Owner.UserName == username);
+        }
+
+        public string GetPath(string name, string username)
+        {
+            return GetFileMetadataByName(name, username).Path;
         }
 
         public bool Exists(string filename, string username)
