@@ -5,9 +5,9 @@ using PDFReader.API.Repositories;
 using PDFReader.API.FileManagement.Interface;
 using PDFReader.API.FileManagement;
 using PDFReader.API.ExceptionHandling;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -26,11 +26,18 @@ builder.Services.AddScoped<IFileManager, FileManagerLocal>();
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 
+// Serilog Setup 
+builder.Host.UseSerilog((context, configuration) =>
+    configuration.ReadFrom.Configuration(context.Configuration));
+
 var app = builder.Build();
 
 app.UseExceptionHandler();
+
+
 app.UseDefaultFiles();
 app.UseStaticFiles();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -40,6 +47,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseSerilogRequestLogging();
 
 app.UseAuthorization();
 

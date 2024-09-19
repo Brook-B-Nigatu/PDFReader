@@ -328,3 +328,12 @@ C:\Users\brook\Desktop\Projects\PDFReader\PDFReader.API\obj\Debug\net8.0\refint\
 C:\Users\brook\Desktop\Projects\PDFReader\PDFReader.API\obj\Debug\net8.0\PDFReader.API.pdb
 C:\Users\brook\Desktop\Projects\PDFReader\PDFReader.API\obj\Debug\net8.0\PDFReader.API.genruntimeconfig.cache
 C:\Users\brook\Desktop\Projects\PDFReader\PDFReader.API\obj\Debug\net8.0\ref\PDFReader.API.dll
+C:\Users\brook\Desktop\Projects\PDFReader\PDFReader.API\bin\Debug\net8.0\Serilog.dll
+C:\Users\brook\Desktop\Projects\PDFReader\PDFReader.API\bin\Debug\net8.0\Serilog.AspNetCore.dll
+C:\Users\brook\Desktop\Projects\PDFReader\PDFReader.API\bin\Debug\net8.0\Serilog.Extensions.Hosting.dll
+C:\Users\brook\Desktop\Projects\PDFReader\PDFReader.API\bin\Debug\net8.0\Serilog.Extensions.Logging.dll
+C:\Users\brook\Desktop\Projects\PDFReader\PDFReader.API\bin\Debug\net8.0\Serilog.Formatting.Compact.dll
+C:\Users\brook\Desktop\Projects\PDFReader\PDFReader.API\bin\Debug\net8.0\Serilog.Settings.Configuration.dll
+C:\Users\brook\Desktop\Projects\PDFReader\PDFReader.API\bin\Debug\net8.0\Serilog.Sinks.Console.dll
+C:\Users\brook\Desktop\Projects\PDFReader\PDFReader.API\bin\Debug\net8.0\Serilog.Sinks.Debug.dll
+C:\Users\brook\Desktop\Projects\PDFReader\PDFReader.API\bin\Debug\net8.0\Serilog.Sinks.File.dll
