@@ -2,6 +2,7 @@ import FileUploadForm from "./FileUploadForm";
 import FileList from "./FileList";
 import DisplayPdf from "./DisplayPdf";
 import { useState, useEffect } from 'react';
+import SignupForm from "./UserAuth/SignupForm";
 
 
 
@@ -32,6 +33,7 @@ export default function Home() {
             <FileUploadForm />
             <FileList fileNames={fileNames} setUrl={setActiveFileUrl} />
             <DisplayPdf url={activeFileUrl} />
+            <SignupForm/>
         </div>
      )
 }
