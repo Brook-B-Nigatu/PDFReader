@@ -1,5 +1,6 @@
 ﻿using PDFReader.API.DBModels;
 using PDFReader.API.Repositories.Interfaces;
+using PDFReader.API.ExceptionHandling.Exceptions;
 
 namespace PDFReader.API.Repositories
 {
@@ -19,13 +20,13 @@ namespace PDFReader.API.Repositories
 
         public FileMetadata GetFileMetadataByID(int id)
         {
-            return _context.FileMetadata.Find(id)?? throw new Exception($"No file metadata with id {id}");
+            return _context.FileMetadata.Find(id)?? throw new FileMissingException($"No file metadata with id {id}");
         }
 
-        public FileMetadata GetFileMetadataByName(string name, string username)
+        public FileMetadata GetFileMetadataByName(string filename, string username)
         {
-            return _context.FileMetadata.FirstOrDefault(data => (data.Name == name && data.Owner.UserName == username))
-                ?? throw new Exception($"User {username} owns no file with name {name}");
+            return _context.FileMetadata.FirstOrDefault(data => (data.Name == filename && data.Owner.UserName == username))
+                ?? throw new FileMissingException($"User {username} owns no file with name {filename}");
         }
 
         public IEnumerable<FileMetadata> GetFilesOfUser(string username)
@@ -33,9 +34,9 @@ namespace PDFReader.API.Repositories
             return _context.FileMetadata.Where(data => data.Owner.UserName == username);
         }
 
-        public string GetPath(string name, string username)
+        public string GetPath(string filename, string username)
         {
-            return GetFileMetadataByName(name, username).Path;
+            return GetFileMetadataByName(filename, username).Path;
         }
 
         public bool Exists(string filename, string username)

@@ -1,5 +1,6 @@
 ﻿using PDFReader.API.DBModels;
 using PDFReader.API.Repositories.Interfaces;
+using PDFReader.API.ExceptionHandling.Exceptions;
 
 namespace PDFReader.API.Repositories
 {
@@ -20,13 +21,13 @@ namespace PDFReader.API.Repositories
         public User GetUserByID(int id)
         {
             
-            return _context.Users.Find(id) ?? throw new Exception($"No user with id {id}");
+            return _context.Users.Find(id) ?? throw new UserMissingException($"No user with id {id}");
         }
 
-        public User GetUserByName(string name)
+        public User GetUserByName(string username)
         {
-            return _context.Users.FirstOrDefault(user => user.UserName == name)
-                ?? throw new Exception($"No user with username {name}");
+            return _context.Users.FirstOrDefault(user => user.UserName == username)
+                ?? throw new UserMissingException($"No user with username {username}");
         }
 
         public bool Exists(string username)

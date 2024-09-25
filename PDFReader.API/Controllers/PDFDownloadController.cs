@@ -12,18 +12,25 @@ namespace PDFReader.API.Controllers
     {
         private readonly IFileMetadataRepository _fileMetadataRepository;
         private readonly IFileManager _fileManager;
-        public PDFDownloadController(IFileMetadataRepository fileMetadataRepository, IFileManager fileManager)
+        private readonly ILogger<PDFDownloadController> _logger;
+        public PDFDownloadController(IFileMetadataRepository fileMetadataRepository, 
+                                    IFileManager fileManager,
+                                    ILogger<PDFDownloadController> logger)
         {
             _fileMetadataRepository = fileMetadataRepository;
             _fileManager = fileManager;
+            _logger = logger;
         }
 
         [HttpGet("")]
         public string[] GetList()
         {
-            // Return an array of the available files for the requesting user
             string username = "default";
+
+            _logger.LogInformation($"fetching list of filenames available for user {username}...");
+
             string[] res = _fileMetadataRepository.GetFilesOfUser(username).Select(data => data.Name).ToArray();
+
             return res;
         }
 
@@ -31,7 +38,12 @@ namespace PDFReader.API.Controllers
         public IActionResult GetPDF(string filename)
         {
             string username = "default";
+
+            _logger.LogInformation($"fetching file {filename} for user {username}");
+
             string path = _fileMetadataRepository.GetPath(filename, username);
+
+            _logger.LogInformation($"file found at path {path}");
             
             return PhysicalFile(path, "application/pdf", filename);
         }
