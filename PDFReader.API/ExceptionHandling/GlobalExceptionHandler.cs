@@ -34,6 +34,11 @@ namespace PDFReader.API.ExceptionHandling
                     problemDetails.Title = "User Not Found";
                     break;
 
+                case UsernameTakenException:
+                    problemDetails.Status = 409;
+                    problemDetails.Title = "Username Taken";
+                    break;
+
                 default:
                     problemDetails.Status = 500;
                     problemDetails.Title = "Internal Error";

@@ -10,7 +10,26 @@ export default function SignupForm() {
         console.log(username, password, confirmPassword);
         
         if (password === confirmPassword) {
-            setError("");
+            const formData = new FormData();
+            formData.append("name", username);
+            formData.append("password", password);
+
+            const response = await fetch("api/user/signup", {
+                method: "Post",
+                body : formData
+            });
+
+            switch (response.status) {
+                case 201:
+                    setError("");
+                    break;
+                case 409:
+                    setError("Username Taken!");
+                    break;
+                default:
+                    setError("Please Try Again");
+            }
+            
         }
         else {
             setError("Passwords must match!!")
