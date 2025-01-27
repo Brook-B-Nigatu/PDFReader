@@ -22,10 +22,9 @@ namespace PDFReader.API.Controllers
             _logger = logger;
         }
 
-        [HttpGet("")]
-        public string[] GetList()
-        {
-            string username = "default";
+        [HttpGet("files/{username}")]
+        public string[] GetList(string username)
+        { 
 
             _logger.LogInformation($"fetching list of filenames available for user {username}...");
 
@@ -35,17 +34,17 @@ namespace PDFReader.API.Controllers
         }
 
         [HttpGet("{fileName}")]
-        public IActionResult GetPDF(string filename)
+        public IActionResult GetPDF(int fileId)
         {
             string username = "default";
 
-            _logger.LogInformation($"fetching file {filename} for user {username}");
+            _logger.LogInformation($"fetching file {fileId} for user {username}");
 
-            string path = _fileMetadataRepository.GetPath(filename, username);
+            string path = _fileMetadataRepository.GetFileMetadataByID(fileId).Path;
 
             _logger.LogInformation($"file found at path {path}");
             
-            return PhysicalFile(path, "application/pdf", filename);
+            return PhysicalFile(path, "application/pdf");
         }
 
     }

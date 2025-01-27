@@ -9,10 +9,10 @@ export default function FileList({ fileNames, setUrl }) {
     
 }
 
-function FileListItem({ fileName, setUrl }) {
+function FileListItem({ id, fileName, setUrl }) {
     const [fileUrl, setFileUrl] = useState("");
     const fetchFile = async () => {
-        const response = await fetch(`api/download/${fileName}`);
+        const response = await fetch(`api/download/${id}`);
         const blb = await response.blob();
         const url = URL.createObjectURL(blb);
         setFileUrl(url);
@@ -34,6 +34,7 @@ function FileListItem({ fileName, setUrl }) {
 }
 
 FileListItem.propTypes = {
+    id: PropTypes.int.isRequired,
     fileName: PropTypes.string.isRequired,
     setUrl : PropTypes.func.isRequired
 };

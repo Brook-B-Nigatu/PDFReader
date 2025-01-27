@@ -17,7 +17,7 @@ export default function LoginForm() {
         });
 
         if (response.status == 200) {
-            sessionStorage.setItem("username", username);
+            localStorage.setItem("username", username);
         }
         setUsername("");
         setPassword("");
