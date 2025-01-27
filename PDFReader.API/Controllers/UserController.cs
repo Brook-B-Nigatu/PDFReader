@@ -35,5 +35,25 @@ namespace PDFReader.API.Controllers
 
             return Created();
         }
+
+        [HttpPost("[action]")]
+        public IActionResult Login()
+        {
+            string name = Request.Form["name"].ToString ();
+            string password = Request.Form["password"].ToString ();
+
+            if (!_userRepository.Exists (name) )
+            {
+                throw new Exception($"username {name} doesn't exist");
+            }
+
+            if (_userRepository.GetUserByName(name).Password != password)
+            {
+                throw new Exception($"password incorrect");
+            }
+
+            return Ok();
+        }
+
     }
 }

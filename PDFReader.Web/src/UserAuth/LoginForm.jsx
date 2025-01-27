@@ -7,13 +7,13 @@ export default function LoginForm() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         console.log(username, password);
-        const data = [username, password];
+
+        const formData = new FormData();
+        formData.append("name", username);
+        formData.append("password", password);
         const response = await fetch("api/login/", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: data
+            body: formData
         });
 
         if (response.status == 200) {
