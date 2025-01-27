@@ -23,12 +23,12 @@ namespace PDFReader.API.Controllers
         }
 
         [HttpGet("files/{username}")]
-        public string[] GetList(string username)
-        { 
+        public dynamic[] GetList(string username)
+        {
 
-            _logger.LogInformation($"fetching list of filenames available for user {username}...");
+            _logger.LogInformation($"fetching list of files available for user {username}...");
 
-            string[] res = _fileMetadataRepository.GetFilesOfUser(username).Select(data => data.Name).ToArray();
+            var res = _fileMetadataRepository.GetFilesOfUser(username).Select(data => { return new {name = data.Name, id = data.ID}; }).ToArray();
 
             return res;
         }
