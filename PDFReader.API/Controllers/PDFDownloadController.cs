@@ -36,9 +36,6 @@ namespace PDFReader.API.Controllers
         [HttpGet("{fileName}")]
         public IActionResult GetPDF(int fileId)
         {
-            string username = "default";
-
-            _logger.LogInformation($"fetching file {fileId} for user {username}");
 
             string path = _fileMetadataRepository.GetFileMetadataByID(fileId).Path;
 
