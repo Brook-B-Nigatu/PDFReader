@@ -4,7 +4,7 @@ import { useState } from 'react';
 export default function FileList({ fileNames, setUrl }) {
 
     return (
-        fileNames.map((f, i) => <FileListItem key={i} fileName={f} setUrl={ setUrl } />)
+        fileNames.map((f, i) => <FileListItem key={i} id={f.id} fileName={f.name} setUrl={ setUrl } />)
     );
     
 }

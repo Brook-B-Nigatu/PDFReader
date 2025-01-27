@@ -24,11 +24,11 @@ export default function Home() {
 
 
     async function getFileNames() {
-        const response = await fetch("api/download");
+        const response = await fetch(`api/download/files/${localStorage.getItem("username")}`);
 
         setFileNames(await response.json());
     }
-
+        
     return (
         <div>
             <FileUploadForm />
