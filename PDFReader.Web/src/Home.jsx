@@ -9,7 +9,7 @@ import LoginForm from "./UserAuth/LoginForm";
 
 export default function Home() {
 
-    const [fileNames, setFileNames] = useState([]);
+    const [fileData, setFileData] = useState([]);
     const [activeFileUrl, setActiveFileUrl] = useState("");
 
     useEffect(
@@ -26,13 +26,13 @@ export default function Home() {
     async function getFileNames() {
         const response = await fetch(`api/download/files/${localStorage.getItem("username")}`);
 
-        setFileNames(await response.json());
+        setFileData(await response.json());
     }
         
     return (
         <div>
             <FileUploadForm />
-            <FileList fileNames={fileNames} setUrl={setActiveFileUrl} />
+            <FileList fileData={fileData} setUrl={setActiveFileUrl} />
             <DisplayPdf url={activeFileUrl} />
             <SignupForm />
             <LoginForm />

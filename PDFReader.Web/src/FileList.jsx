@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types'; 
 import { useState } from 'react';
 
-export default function FileList({ fileNames, setUrl }) {
+export default function FileList({ fileData, setUrl }) {
 
     return (
-        fileNames.map((f, i) => <FileListItem key={i} id={f.id} fileName={f.name} setUrl={ setUrl } />)
+        fileData.map((f, i) => <FileListItem key={i} id={f.id} fileName={f.name} setUrl={ setUrl } />)
     );
     
 }
