@@ -7,6 +7,18 @@ export default function LoginForm() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         console.log(username, password);
+        const data = [username, password];
+        const response = await fetch("api/login/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: data
+        });
+
+        if (response.status == 200) {
+            sessionStorage.setItem("username", username);
+        }
         setUsername("");
         setPassword("");
         setError("");
